@@ -30,10 +30,16 @@ import javax.swing.DefaultListModel;
 public class Employee extends JFrame{
   public static void main(String[] args) {
     
-    JLabel l;
-    JTextField t;
-    JButton b;
+   JLabel l;
+    final JTextField t1;
+    final JTextField t2;
+    final JTextField t3;
+    final JTextField t4;
+    JButton b1;
+    JButton b2;
     JFrame f = new JFrame("Lab 8");
+    //should make exit button work
+    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     Container cp = f.getContentPane();
     cp.setLayout(new GridBagLayout());
     cp.setBackground(UIManager.getColor("control"));
@@ -64,16 +70,16 @@ public class Employee extends JFrame{
     c.fill = GridBagConstraints.HORIZONTAL;
     c.anchor = GridBagConstraints.CENTER;
 
-    cp.add(t = new JTextField(35), c);
-    t.setFocusAccelerator('n');
+    cp.add(t1 = new JTextField(35), c);
+    t1.setFocusAccelerator('n');
     c.gridx = 1;
     c.gridy = GridBagConstraints.RELATIVE;
-    cp.add(t = new JTextField(35), c);
-    t.setFocusAccelerator('h');
-    cp.add(t = new JTextField(35), c);
-    t.setFocusAccelerator('c');
-    cp.add(t = new JTextField(35), c);
-    t.setFocusAccelerator('s');
+    cp.add(t2 = new JTextField(35), c);
+    t2.setFocusAccelerator('h');
+    cp.add(t3 = new JTextField(35), c);
+    t3.setFocusAccelerator('c');
+    cp.add(t4 = new JTextField(35), c);
+    t4.setFocusAccelerator('s');
     
     c.weightx = 0.0;
     c.fill = GridBagConstraints.NONE;
@@ -81,13 +87,13 @@ public class Employee extends JFrame{
    	c.gridwidth = 2;
    	c.gridx = 0;
    	c.gridy = 4;
-    cp.add(b = new JButton("Sumbit"), c);
-    b.setMnemonic('s');
+    cp.add(b1 = new JButton("Sumbit"), c);
+    b1.setMnemonic('s');
     c.gridwidth = 2;
    	c.gridx = 1;
    	c.gridy = 4;
-    cp.add(b = new JButton("Exit"), c);
-    b.setMnemonic('e');
+    cp.add(b2 = new JButton("Exit"), c);
+    b2.setMnemonic('e');
     
     f.pack();
     f.addWindowListener(new WindowAdapter() {
@@ -110,6 +116,28 @@ public class Employee extends JFrame{
     cp.add(option1);
     cp.add(option2);
     cp.add(option3);
+    
+ 
+    b1.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e)
+    	{
+    		JOptionPane.showMessageDialog(null, "worked!");
+    		//make a setter method in employee that will recive the data from t1-4
+    		//and set the values of employee, t1 = first.....t4 = phone
+    		DirectoryEditor.s.add(new Employee(t1.getText(),t2.getText(),t3.getText(),t4.getText()));
+    		t1.removeAll();
+    		t2.removeAll();
+    		t3.removeAll();
+    		t4.removeAll();
+    		//JOptionPane.
+    	}
+    });    
+    b2.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e)
+    	{
+    		JOptionPane.showMessageDialog(null, "worked!");
+    	}
+    });    
     
     
   //Can't seem to get the list to wirk properly with formatting of the JFrame
