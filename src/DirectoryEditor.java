@@ -18,16 +18,16 @@ public class DirectoryEditor {
 			in = console.nextLine();
 			if(in.equalsIgnoreCase("add")){
 				off2 = false;
-				while(!off){
-					System.out.println("Add someone: [first] [last] [dept] [phone] or End to end.");
+				//while(!off){
+					/*System.out.println("Add someone: [first] [last] [dept] [phone] or End to end.");
 					in = console.nextLine();
 					if(in.equalsIgnoreCase("end")){
 						off = true;
 					}else{
 						s.add(in);
-					}
+					}*/
+					Buttons.Buttons();
 					
-				}
 			}else if(in.equalsIgnoreCase("print")){
 				s.print();
 			}else if(in.equalsIgnoreCase("clr")){
