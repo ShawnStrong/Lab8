@@ -30,5 +30,9 @@ public class DirectoryProxy implements Directory {
 		// TODO Auto-generated method stub
 		sort.add(new Employee(str));
 	}
+	public void add(Employee temp)
+	{
+		sort.add(temp);
+	}
 
 }
