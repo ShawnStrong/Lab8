@@ -15,6 +15,14 @@ public class Employee {
 		dep = splitted[2];
 		num = splitted[3];
 	}
+	public Employee(String a,String b,String c,String d)
+	{
+		
+		first = a;
+		last = b;
+		dep = c;
+		num = d;
+	}
 	
 	public void print()
 	{
