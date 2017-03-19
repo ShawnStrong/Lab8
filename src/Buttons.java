@@ -38,7 +38,9 @@ public class Buttons extends JFrame{
     final JTextField t3;
     final JTextField t4;
     JButton b1;
-    JButton b2;
+    JButton b2;	
+    JButton b3;
+    JButton b4;	  
     JFrame f = new JFrame("Lab 8");
     //should make exit button work
     f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -101,6 +103,11 @@ public class Buttons extends JFrame{
    	c.gridy = 4;
     cp.add(b3 = new JButton("Print"), c);
     b1.setMnemonic('p');
+    c.gridwidth = 2;
+   	c.gridx = 2;
+   	c.gridy = 4;
+    cp.add(b4 = new JButton("Clear"), c);
+    b4.setMnemonic('c');	  
     
     f.pack();
     f.addWindowListener(new WindowAdapter() {
