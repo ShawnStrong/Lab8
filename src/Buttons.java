@@ -180,8 +180,22 @@ public class Buttons extends JFrame{
     		 f.dispose();
     	}
     });    
-    
-    
+    b3.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e)
+    	{
+    		//JOptionPane.showMessageDialog(null, "worked!");
+    		DirectoryProxy s = new DirectoryProxy();
+    		s.print();
+    	}
+    });  
+    b4.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e)
+    	{
+    		//JOptionPane.showMessageDialog(null, "worked!");
+    		DirectoryProxy s = new DirectoryProxy();
+    		s.clear();
+    	}
+    }); 
     
   //Can't seem to get the list to work properly with formatting of the JFrame
   
