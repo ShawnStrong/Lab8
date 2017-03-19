@@ -1,38 +1,114 @@
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.LinkedList;
 
 import com.google.gson.Gson;
 
-public class DirectoryProxy implements Directory {
+public class DirectoryProxy{
 	LinkedList<Employee> sort = new LinkedList<>();
-	MainDirectory dir = new MainDirectory();
 	Gson g = new Gson();
 
-	@Override
 	public void print() {
 		// TODO Auto-generated method stub
 
-		String out = "";
-		out = g.toJson(sort);
-		dir.reconstruct(out);
-		dir.print();
-		sort.clear();
+		try {
+			System.out.println("Attempting to connect to the server");
+
+			// Client will connect to this location
+			URL site = new URL("http://localhost:8000/print");
+			HttpURLConnection conn = (HttpURLConnection) site.openConnection();
+
+			// now create a POST request
+			conn.setRequestMethod("POST");
+			conn.setDoOutput(true);
+			conn.setDoInput(true);
+			DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+			
+			System.out.println("Connected to server");
+
+			// build a string that contains JSON from console
+			//String content = "";
+			//content = getJSON();
+			//String content = g.toJson(temp);
+
+			// write out string to output buffer for message
+			//out.writeBytes(content);
+			out.flush();
+			out.close();
+
+			System.out.println("Done sent to server");
+
+			InputStreamReader inputStr = new InputStreamReader(conn.getInputStream());
+
+			// string to hold the result of reading in the response
+			StringBuilder sb = new StringBuilder();
+
+			// read the characters from the request byte by byte and build up
+			// the Response
+			int nextChar;
+			while ((nextChar = inputStr.read()) > -1) {
+				sb = sb.append((char) nextChar);
+			}
+			System.out.println("Return String: " + sb);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
 		sort.clear();
-		dir.clear();
 
 	}
 
-	public void add(String str) {
-		// TODO Auto-generated method stub
-		sort.add(new Employee(str));
-	}
 	public void add(Employee temp)
 	{
-		sort.add(temp);
+		try {
+			System.out.println("Attempting to connect to the server");
+
+			// Client will connect to this location
+			URL site = new URL("http://localhost:8000/submit");
+			HttpURLConnection conn = (HttpURLConnection) site.openConnection();
+
+			// now create a POST request
+			conn.setRequestMethod("POST");
+			conn.setDoOutput(true);
+			conn.setDoInput(true);
+			DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+			
+			System.out.println("Connected to server");
+
+			// build a string that contains JSON from console
+			//String content = "";
+			//content = getJSON();
+			String content = g.toJson(temp);
+
+			// write out string to output buffer for message
+			out.writeBytes(content);
+			out.flush();
+			out.close();
+
+			System.out.println("Done sent to server");
+
+			InputStreamReader inputStr = new InputStreamReader(conn.getInputStream());
+
+			// string to hold the result of reading in the response
+			StringBuilder sb = new StringBuilder();
+
+			// read the characters from the request byte by byte and build up
+			// the Response
+			int nextChar;
+			while ((nextChar = inputStr.read()) > -1) {
+				sb = sb.append((char) nextChar);
+			}
+			System.out.println("Return String: " + sb);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
