@@ -6,6 +6,7 @@ import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,11 +25,12 @@ import javax.swing.SwingUtilities;
 import javax.swing.ListSelectionModel;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 
 
-public class Employee extends JFrame{
-  public static void main(String[] args) {
+public class Buttons extends JFrame{
+  public static void Buttons() {
     
    JLabel l;
     final JTextField t1;
@@ -167,6 +169,3 @@ public class Employee extends JFrame{
     
 }
   }
-
-
-
