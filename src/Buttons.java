@@ -118,28 +118,30 @@ public class Employee extends JFrame{
     cp.add(option3);
     
     //b1 is the submit button
+    
     b1.addActionListener(new ActionListener(){
     	public void actionPerformed(ActionEvent e)
     	{
-    		JOptionPane.showMessageDialog(null, "worked!");
+    		//JOptionPane.showMessageDialog(null, "worked!");
     		//make a setter method in employee that will recive the data from t1-4
     		//and set the values of employee, t1 = first.....t4 = phone
+    		
     		DirectoryEditor.s.add(new Employee(t1.getText(),t2.getText(),t3.getText(),t4.getText()));
-        //this attempts to remove old text after submitted (does not work lol)
-    		t1.removeAll();
-    		t2.removeAll();
-    		t3.removeAll();
-    		t4.removeAll();
+    		t1.setText("");
+    		t2.setText("");
+    		t3.setText("");
+    		t4.setText("");
     		//JOptionPane.
     	}
     });    
-    //b2 is the exit button. (not working lol)
     b2.addActionListener(new ActionListener(){
     	public void actionPerformed(ActionEvent e)
     	{
-    		JOptionPane.showMessageDialog(null, "worked!");
+    		//JOptionPane.showMessageDialog(null, "worked!");
+    		 f.dispose();
     	}
     });    
+    
     
     
   //Can't seem to get the list to wirk properly with formatting of the JFrame
