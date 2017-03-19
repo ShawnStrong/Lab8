@@ -125,8 +125,8 @@ public class Employee extends JFrame{
     		//JOptionPane.showMessageDialog(null, "worked!");
     		//make a setter method in employee that will recive the data from t1-4
     		//and set the values of employee, t1 = first.....t4 = phone
-    		
-    		DirectoryEditor.s.add(new Employee(t1.getText(),t2.getText(),t3.getText(),t4.getText()));
+    		DirectoryProxy s = new DirectoryProxy();
+    		s.add(new Employee(t1.getText(),t2.getText(),t3.getText(),t4.getText()));
     		t1.setText("");
     		t2.setText("");
     		t3.setText("");
