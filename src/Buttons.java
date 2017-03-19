@@ -15,6 +15,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.plaf.ListUI;
+import javax.swing.plaf.basic.BasicListUI;
 
 import java.awt.FlowLayout;
 import javax.swing.ButtonGroup;
@@ -33,6 +35,8 @@ public class Buttons extends JFrame{
   public static void main(String[] args) {
     
    JLabel l;
+   //BasicListUI ui = new BasicListUI();
+   //ui.installUI();
     final JTextField t1;
     final JTextField t2;
     final JTextField t3;
@@ -131,6 +135,25 @@ public class Buttons extends JFrame{
     cp.add(option2);
     cp.add(option3);
     
+    DefaultListModel<String> model = new DefaultListModel<String>();
+    model.ensureCapacity(6);
+    model.addElement("Mr.");
+    model.addElement("Ms.");
+    model.addElement("Mrs.");
+    model.addElement("Dr.");
+    model.addElement("Col.");
+    model.addElement("Prof.");
+    
+    c.anchor = GridBagConstraints.FIRST_LINE_START;
+
+    JList<String> m = new JList<String>(model);
+   
+    //m.setUI(ui);
+    //m.setLocation(10, 40);
+    m.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    JScrollPane list = new JScrollPane(m);
+    f.add(list,c);
+    
     //b1 is the submit button
     
     b1.addActionListener(new ActionListener(){
@@ -140,7 +163,9 @@ public class Buttons extends JFrame{
     		//make a setter method in employee that will recive the data from t1-4
     		//and set the values of employee, t1 = first.....t4 = phone
     		DirectoryProxy s = new DirectoryProxy();
-    		s.add(new Employee(t1.getText(),t2.getText(),t3.getText(),t4.getText()));
+    		boolean[] Rbuttons = {option1.isSelected(), option2.isSelected(), option3.isSelected()};
+    		boolean[] Lists = { m.isSelectedIndex(0),m.isSelectedIndex(1),m.isSelectedIndex(2),m.isSelectedIndex(3),m.isSelectedIndex(4),m.isSelectedIndex(5)};
+    		s.add(new Employee(t1.getText(),t2.getText(),t3.getText(),t4.getText(),Rbuttons,Lists));
     		t1.setText("");
     		t2.setText("");
     		t3.setText("");
@@ -155,29 +180,7 @@ public class Buttons extends JFrame{
     		 f.dispose();
     	}
     });    
-    
-    
-    
-  //Can't seem to get the list to wirk properly with formatting of the JFrame
-//  DefaultListModel<String> model = new DefaultListModel<String>();
-//  model.ensureCapacity(6);
-//  model.addElement("Mr.");
-//  model.addElement("Ms.");
-//  model.addElement("Mrs.");
-//  model.addElement("Dr.");
-//  model.addElement("Col.");
-//  model.addElement("Prof.");
-//  
-//  c.anchor = GridBagConstraints.FIRST_LINE_START;
-//
-//  
-//  
-//
-//
-//  JList<String> m = new JList<String>(model);
-//  m.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//  JScrollPane list = new JScrollPane(m);
-//  f.add(list,c);
+  
     
 }
   }
