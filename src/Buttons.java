@@ -92,10 +92,15 @@ public class Buttons extends JFrame{
     cp.add(b1 = new JButton("Sumbit"), c);
     b1.setMnemonic('s');
     c.gridwidth = 2;
-   	c.gridx = 1;
+   	c.gridx = 2;
    	c.gridy = 4;
     cp.add(b2 = new JButton("Exit"), c);
     b2.setMnemonic('e');
+	  c.gridwidth = 2;
+   	c.gridx = 1;
+   	c.gridy = 4;
+    cp.add(b3 = new JButton("Print"), c);
+    b1.setMnemonic('p');
     
     f.pack();
     f.addWindowListener(new WindowAdapter() {
