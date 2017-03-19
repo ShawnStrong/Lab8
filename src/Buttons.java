@@ -39,7 +39,7 @@ public class Employee extends JFrame{
     JButton b2;
     JFrame f = new JFrame("Lab 8");
     //should make exit button work
-    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     Container cp = f.getContentPane();
     cp.setLayout(new GridBagLayout());
     cp.setBackground(UIManager.getColor("control"));
