@@ -30,7 +30,7 @@ import javax.swing.DefaultListModel;
 
 
 public class Buttons extends JFrame{
-  public static void Buttons() {
+  public static void main(String[] args) {
     
    JLabel l;
     final JTextField t1;
