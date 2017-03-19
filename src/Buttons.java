@@ -180,6 +180,11 @@ public class Buttons extends JFrame{
     		 f.dispose();
     	}
     });    
+    
+    
+    
+  //Can't seem to get the list to work properly with formatting of the JFrame
+  
   
     
 }
